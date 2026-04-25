@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   Text,
   VStack
 } from "@chakra-ui/react";
@@ -70,7 +71,12 @@ function LandingInvitation() {
             borderColor="white"
             zIndex={3}
           >
-            D&C
+            <Image
+              src="/dclogo1.png"
+              alt="Decorative Element"
+              w={{ base: "40px", md: "48px" }}
+              h={{ base: "40px", md: "48px" }}
+            />
           </Box>
 
           <VStack
