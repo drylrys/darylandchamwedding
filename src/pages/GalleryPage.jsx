@@ -1,7 +1,7 @@
-import { Box } from '@chakra-ui/react';
-import Navbar from '../components/Navbar';
-import GallerySection from '../components/GallerySection';
-import Footer from '../components/Footer';
+import { Box } from "@chakra-ui/react";
+import Navbar from "../components/Navbar";
+import GallerySection from "../components/GallerySection";
+import Footer from "../components/Footer";
 
 function GalleryPage() {
   return (
