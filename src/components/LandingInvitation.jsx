@@ -4,9 +4,9 @@ import {
   Container,
   Heading,
   Text,
-  VStack,
-} from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+  VStack
+} from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 function LandingInvitation() {
   return (
@@ -41,7 +41,7 @@ function LandingInvitation() {
             left="0"
             right="0"
             top="0"
-            h={{ base: '120px', md: '150px' }}
+            h={{ base: "120px", md: "150px" }}
             bgGradient="linear(to-b, #f8fbf7, #e6efe4)"
             border="1px solid"
             borderColor="sage.200"
@@ -53,18 +53,18 @@ function LandingInvitation() {
 
           <Box
             position="absolute"
-            top={{ base: '96px', md: '116px' }}
+            top={{ base: "96px", md: "116px" }}
             left="50%"
             transform="translateX(-50%)"
-            w={{ base: '54px', md: '62px' }}
-            h={{ base: '54px', md: '62px' }}
+            w={{ base: "54px", md: "62px" }}
+            h={{ base: "54px", md: "62px" }}
             borderRadius="full"
-            bg="gold.500"
-            color="white"
+            bg="whiteAlpha.900"
+            colorScheme="sage"
             display="grid"
             placeItems="center"
             fontFamily="heading"
-            fontSize={{ base: 'md', md: 'lg' }}
+            fontSize={{ base: "md", md: "lg" }}
             boxShadow="lg"
             border="3px solid"
             borderColor="white"
@@ -81,10 +81,10 @@ function LandingInvitation() {
             mt={{ base: 20, md: 24 }}
             p={{ base: 7, md: 12 }}
             bg="rgba(255, 255, 255, 0.93)"
-            border="1px solid"
+            // border="1px solid"
             borderColor="sage.100"
-            borderRadius="2xl"
-            boxShadow="md"
+            // borderRadius="2xl"
+            // boxShadow="md"
             maxW="3xl"
             mx="auto"
             backdropFilter="blur(4px)"
@@ -100,7 +100,7 @@ function LandingInvitation() {
             </Text>
 
             <Heading
-              size={{ base: '2xl', md: '4xl' }}
+              size={{ base: "2xl", md: "4xl" }}
               lineHeight="1.08"
               color="black"
             >
@@ -124,7 +124,7 @@ function LandingInvitation() {
               colorScheme="sage"
               size="lg"
               px={8}
-              _hover={{ transform: 'translateY(-1px)', boxShadow: 'lg' }}
+              _hover={{ transform: "translateY(-1px)", boxShadow: "lg" }}
             >
               Open Invitation
             </Button>
