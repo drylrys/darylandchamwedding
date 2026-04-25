@@ -1,0 +1,110 @@
+import { Box, HStack, Text, VStack } from '@chakra-ui/react';
+import { useEffect, useMemo, useState } from 'react';
+
+function getTimeRemaining(targetDate) {
+  const total = targetDate.getTime() - Date.now();
+  const safeTotal = Math.abs(total);
+
+  const days = Math.floor(safeTotal / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((safeTotal / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((safeTotal / (1000 * 60)) % 60);
+  const seconds = Math.floor((safeTotal / 1000) % 60);
+
+  return { total, days, hours, minutes, seconds, isAfterWedding: total <= 0 };
+}
+
+function TimeBlock({ value, label, withDivider = false }) {
+  return (
+    <VStack
+      minW={{ base: '82px', md: '120px' }}
+      py={{ base: 1, md: 2 }}
+      px={{ base: 2, md: 4 }}
+      spacing={{ base: 0.5, md: 1 }}
+      position="relative"
+      _after={
+        withDivider
+          ? {
+              content: '""',
+              position: 'absolute',
+              right: { base: '-2px', md: '-6px' },
+              top: '20%',
+              h: '60%',
+              w: '1px',
+              bg: 'sage.200',
+            }
+          : undefined
+      }
+    >
+      <Text
+        fontSize={{ base: '3xl', md: '5xl' }}
+        fontWeight="bold"
+        color="sage.800"
+        lineHeight="1"
+        letterSpacing="0.01em"
+        fontVariantNumeric="tabular-nums"
+      >
+        {String(value).padStart(2, '0')}
+      </Text>
+      <Text
+        fontSize={{ base: '10px', md: 'xs' }}
+        textTransform="uppercase"
+        letterSpacing="0.16em"
+        color="sage.700"
+        fontWeight="semibold"
+      >
+        {label}
+      </Text>
+    </VStack>
+  );
+}
+
+function CountdownTimer() {
+  const targetDate = useMemo(() => new Date('2027-03-07T15:00:00+08:00'), []);
+  const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining(targetDate));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft(getTimeRemaining(targetDate));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  const blocks = [
+    { value: timeLeft.days, label: 'Days' },
+    { value: timeLeft.hours, label: 'Hours' },
+    { value: timeLeft.minutes, label: 'Minutes' },
+    { value: timeLeft.seconds, label: 'Seconds' },
+  ];
+
+  return (
+    <VStack spacing={{ base: 3, md: 4 }}>
+      <HStack spacing={3} justify="center">
+        <Box w={{ base: '10', md: '14' }} h="1px" bg="gold.500" opacity={0.7} />
+        <Text
+          fontSize={{ base: '10px', md: 'xs' }}
+          textTransform="uppercase"
+          letterSpacing="0.16em"
+          color="sage.700"
+          fontWeight="semibold"
+        >
+          {timeLeft.isAfterWedding ? 'Since We Said I Do' : 'Countdown to I Do'}
+        </Text>
+        <Box w={{ base: '10', md: '14' }} h="1px" bg="gold.500" opacity={0.7} />
+      </HStack>
+
+      <HStack spacing={{ base: 2, md: 5 }} justify="center" flexWrap="wrap">
+        {blocks.map((item, index) => (
+          <TimeBlock
+            key={item.label}
+            value={item.value}
+            label={item.label}
+            withDivider={index < blocks.length - 1}
+          />
+        ))}
+      </HStack>
+    </VStack>
+  );
+}
+
+export default CountdownTimer;
