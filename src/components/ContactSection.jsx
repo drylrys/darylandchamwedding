@@ -1,5 +1,5 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react';
-import Section from './Section';
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import Section from "./Section";
 
 function ContactSection() {
   return (
@@ -26,7 +26,7 @@ function ContactSection() {
             <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
             <Text
               fontFamily="heading"
-              fontSize={{ base: 'lg', md: 'xl' }}
+              fontSize={{ base: "lg", md: "xl" }}
               color="sage.800"
               letterSpacing="0.08em"
             >
@@ -45,18 +45,18 @@ function ContactSection() {
             color="black"
             fontWeight="semibold"
             fontFamily="heading"
-            fontSize={{ base: 'xl', md: '2xl' }}
+            fontSize={{ base: "xl", md: "2xl" }}
           >
             Wedding Coordinator
           </Text>
-          <Text color="sage.800" fontSize={{ base: 'md', md: 'lg' }}>
-            Ms. Andrea Reyes
+          <Text color="sage.800" fontSize={{ base: "md", md: "lg" }}>
+            Mr.Reyes
           </Text>
-          <Text color="sage.800" fontSize={{ base: 'md', md: 'lg' }}>
+          <Text color="sage.800" fontSize={{ base: "md", md: "lg" }}>
             +63 917 555 0123
           </Text>
-          <Text color="sage.800" fontSize={{ base: 'md', md: 'lg' }}>
-            andreareyes.events@email.com
+          <Text color="sage.800" fontSize={{ base: "md", md: "lg" }}>
+            reyes.events@email.com
           </Text>
         </VStack>
       </VStack>
