@@ -1,4 +1,4 @@
-import { Box, Container, Text, VStack } from '@chakra-ui/react';
+import { Box, Container, Text, VStack } from "@chakra-ui/react";
 
 function Footer() {
   return (
@@ -13,13 +13,13 @@ function Footer() {
         <VStack spacing={1}>
           <Text
             fontFamily="heading"
-            fontSize={{ base: '2xl', md: '3xl' }}
+            fontSize={{ base: "2xl", md: "3xl" }}
             color="sage.800"
           >
             Daryl & Cham
           </Text>
           <Text color="sage.700" fontSize="sm">
-            March 7, 2026 · Oasis Manila
+            March 7, 2027 · Oasis Manila
           </Text>
         </VStack>
       </Container>

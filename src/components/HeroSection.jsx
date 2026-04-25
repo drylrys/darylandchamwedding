@@ -102,7 +102,7 @@ function HeroSection() {
               color="sage.800"
               fontWeight="medium"
             >
-              March 7, 2026 · Saturday
+              March 7, 2027 · Saturday
             </Text>
             <Text fontSize={{ base: "sm", md: "md" }} color="sage.700">
               Oasis Manila · Garden Wedding
