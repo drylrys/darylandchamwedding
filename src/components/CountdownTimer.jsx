@@ -15,46 +15,54 @@ function getTimeRemaining(targetDate) {
 
 function TimeBlock({ value, label, withDivider = false }) {
   return (
-    <VStack
-      minW={{ base: '82px', md: '120px' }}
-      py={{ base: 1, md: 2 }}
-      px={{ base: 2, md: 4 }}
-      spacing={{ base: 0.5, md: 1 }}
-      position="relative"
-      _after={
-        withDivider
-          ? {
-              content: '""',
-              position: 'absolute',
-              right: { base: '-2px', md: '-6px' },
-              top: '20%',
-              h: '60%',
-              w: '1px',
-              bg: 'sage.200',
-            }
-          : undefined
-      }
-    >
-      <Text
-        fontSize={{ base: '3xl', md: '5xl' }}
-        fontWeight="bold"
-        color="sage.800"
-        lineHeight="1"
-        letterSpacing="0.01em"
-        fontVariantNumeric="tabular-nums"
-      >
-        {String(value).padStart(2, '0')}
-      </Text>
-      <Text
-        fontSize={{ base: '10px', md: 'xs' }}
-        textTransform="uppercase"
-        letterSpacing="0.16em"
-        color="sage.700"
-        fontWeight="semibold"
-      >
-        {label}
-      </Text>
-    </VStack>
+    <Box position="relative" textAlign="center">
+      <VStack minW={{ base: '64px', md: '88px' }} spacing={0}>
+        <Text
+          fontSize={{ base: '3.2rem', md: '4.8rem' }}
+          fontWeight="300"
+          color="sage.800"
+          lineHeight="1"
+          letterSpacing="-0.02em"
+          fontVariantNumeric="tabular-nums"
+          fontFamily="heading"
+        >
+          {String(value).padStart(2, '0')}
+        </Text>
+        <Box
+          w="6"
+          h="1px"
+          bg="gold.500"
+          opacity={0.6}
+          mx="auto"
+          mt={2}
+          mb={1.5}
+        />
+        <Text
+          fontSize={{ base: '9px', md: '10px' }}
+          textTransform="uppercase"
+          letterSpacing="0.22em"
+          color="sage.600"
+          fontWeight="semibold"
+        >
+          {label}
+        </Text>
+      </VStack>
+      {withDivider && (
+        <Text
+          position="absolute"
+          right={{ base: '-10px', md: '-14px' }}
+          top="30%"
+          transform="translateY(-50%)"
+          color="sage.300"
+          fontSize={{ base: '2xl', md: '3xl' }}
+          fontWeight="thin"
+          lineHeight="1"
+          userSelect="none"
+        >
+          ·
+        </Text>
+      )}
+    </Box>
   );
 }
 
@@ -93,7 +101,7 @@ function CountdownTimer() {
         <Box w={{ base: '10', md: '14' }} h="1px" bg="gold.500" opacity={0.7} />
       </HStack>
 
-      <HStack spacing={{ base: 2, md: 5 }} justify="center" flexWrap="wrap">
+      <HStack spacing={{ base: 3, md: 6 }} justify="center" flexWrap="wrap">
         {blocks.map((item, index) => (
           <TimeBlock
             key={item.label}

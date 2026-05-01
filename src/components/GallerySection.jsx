@@ -1,4 +1,4 @@
-import { Box, Image, SimpleGrid } from '@chakra-ui/react';
+import { Box, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
 import Section from './Section';
 
 const photos = [
@@ -18,28 +18,72 @@ function GallerySection() {
       title="Moments of Us"
       description="A few memories before we say 'I do'."
     >
-      <SimpleGrid columns={{ base: 2, md: 3 }} spacing={3}>
-        {photos.map((src, index) => (
-          <Box
-            key={src}
-            borderRadius="xl"
-            overflow="hidden"
-            bg="white"
-            border="1px solid"
-            borderColor="sage.100"
+      <VStack spacing={6} maxW="5xl" mx="auto" w="full">
+        {/* Ornament */}
+        <Box display="flex" alignItems="center" gap={3} justifyContent="center">
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+          <Text
+            fontFamily="heading"
+            fontSize="xs"
+            color="gold.500"
+            letterSpacing="0.25em"
           >
-            <Image
-              src={src}
-              alt={`Daryl and Cham memory ${index + 1}`}
-              w="full"
-              h={{ base: '140px', md: '220px' }}
-              objectFit="cover"
-              transition="transform .3s ease"
-              _hover={{ transform: 'scale(1.04)' }}
-            />
-          </Box>
-        ))}
-      </SimpleGrid>
+            ✦
+          </Text>
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+        </Box>
+
+        <SimpleGrid
+          columns={{ base: 2, md: 3 }}
+          spacing={{ base: 2, md: 3 }}
+          w="full"
+        >
+          {photos.map((src, index) => (
+            <Box
+              key={src}
+              overflow="hidden"
+              position="relative"
+              _hover={{
+                '& .gallery-img': { transform: 'scale(1.06)' },
+                '& .gallery-overlay': { opacity: 1 },
+              }}
+            >
+              <Image
+                className="gallery-img"
+                src={src}
+                alt={`Daryl and Cham memory ${index + 1}`}
+                w="full"
+                h={{ base: '160px', md: '240px' }}
+                objectFit="cover"
+                transition="transform .5s ease"
+                display="block"
+              />
+              <Box
+                className="gallery-overlay"
+                position="absolute"
+                inset="0"
+                bgGradient="linear(to-t, rgba(31,42,31,0.55), transparent)"
+                opacity={0}
+                transition="opacity .35s ease"
+                display="flex"
+                alignItems="flex-end"
+                p={{ base: 3, md: 4 }}
+              >
+                <Text
+                  color="whiteAlpha.800"
+                  fontSize="xs"
+                  letterSpacing="0.18em"
+                  textTransform="uppercase"
+                  fontFamily="heading"
+                  fontWeight="300"
+                >
+                  Memory {index + 1}
+                </Text>
+              </Box>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </VStack>
     </Section>
   );
 }

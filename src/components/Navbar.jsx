@@ -4,6 +4,7 @@ import {
   Container,
   Flex,
   HStack,
+  Image,
   Link,
   Text
 } from "@chakra-ui/react";
@@ -14,7 +15,6 @@ const navItems = [
   { label: "Home", href: "#home", type: "section" },
   { label: "Story", href: "#story", type: "section" },
   { label: "Details", href: "#details", type: "section" },
-  { label: "Location", href: "#details", type: "section" },
   { label: "Entourage", href: "#entourage", type: "section" },
   { label: "RSVP", href: "#rsvp", type: "section" },
   { label: "FAQ", href: "#faq", type: "section" },
@@ -113,13 +113,25 @@ function Navbar() {
     >
       <Container maxW="6xl" px={{ base: 4, md: 8 }}>
         <Flex h="72px" align="center" justify="space-between" gap={4}>
-          <Text
-            fontFamily="heading"
-            fontSize={{ base: "xl", md: "2xl" }}
-            color="sage.800"
-          >
-            Daryl & Cham
-          </Text>
+          <HStack spacing={2} align="center">
+            <Image
+              src="images/dc-logo.png"
+              alt="D&C monogram"
+              w={{ base: "52px", md: "62px" }}
+              h={{ base: "52px", md: "62px" }}
+              objectFit="contain"
+              flexShrink={0}
+            />
+
+            <Text
+              fontFamily="heading"
+              fontSize={{ base: "xl", md: "2xl" }}
+              color="sage.800"
+              letterSpacing="0.03em"
+            >
+              Daryl & Cham
+            </Text>
+          </HStack>
           <HStack
             spacing={{ base: 2, md: 6 }}
             display={{ base: "none", md: "flex" }}

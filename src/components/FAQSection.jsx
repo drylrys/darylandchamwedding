@@ -43,65 +43,57 @@ function FAQSection() {
       description="Everything you may need before the big day."
       bg="white"
     >
-      <VStack
-        spacing={{ base: 6, md: 8 }}
-        maxW="4xl"
-        mx="auto"
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 10 }}
-        bg="linear-gradient(180deg, rgba(245,248,244,0.72) 0%, rgba(255,255,255,1) 100%)"
-        borderTop="1px solid"
-        borderBottom="1px solid"
-        borderColor="sage.100"
-      >
-        <VStack spacing={3}>
-          <HStack spacing={3} justify="center">
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
-            <Text
-              fontFamily="heading"
-              fontSize={{ base: 'lg', md: 'xl' }}
-              color="sage.800"
-              letterSpacing="0.08em"
-            >
-              Frequently Asked Questions
-            </Text>
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
-          </HStack>
-          <Text color="sage.700" textAlign="center" maxW="2xl" fontSize="sm">
-            A few helpful notes for our guests before the celebration.
+      <VStack spacing={{ base: 8, md: 10 }} maxW="3xl" mx="auto" w="full">
+        {/* Ornament */}
+        <HStack spacing={3} justify="center">
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+          <Text
+            fontFamily="heading"
+            fontSize="xs"
+            color="gold.500"
+            letterSpacing="0.25em"
+          >
+            ✦
           </Text>
-        </VStack>
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+        </HStack>
 
         <Accordion allowMultiple w="full">
-          {faqs.map((item) => (
+          {faqs.map((item, index) => (
             <AccordionItem
               key={item.question}
               border="none"
+              borderTop={index === 0 ? '1px solid' : 'none'}
               borderBottom="1px solid"
-              borderColor="rgba(213, 225, 210, 0.9)"
+              borderColor="sage.100"
             >
               <h3>
                 <AccordionButton
                   py={{ base: 5, md: 6 }}
-                  px={{ base: 0, md: 1 }}
-                  _hover={{ bg: 'transparent', color: 'sage.700' }}
+                  px={0}
+                  _hover={{ bg: 'transparent' }}
                 >
                   <Box
                     as="span"
                     flex="1"
                     textAlign="left"
-                    fontWeight="semibold"
-                    color="black"
                     fontFamily="heading"
+                    fontWeight="300"
+                    color="sage.800"
                     fontSize={{ base: 'lg', md: 'xl' }}
+                    letterSpacing="0.03em"
                   >
                     {item.question}
                   </Box>
-                  <AccordionIcon color="sage.700" fontSize="xl" />
+                  <AccordionIcon color="gold.500" fontSize="lg" />
                 </AccordionButton>
               </h3>
-              <AccordionPanel px={{ base: 0, md: 1 }} pb={6}>
-                <Text color="sage.800" lineHeight="tall" maxW="3xl">
+              <AccordionPanel px={0} pb={6}>
+                <Text
+                  color="sage.600"
+                  lineHeight="tall"
+                  fontSize={{ base: 'sm', md: 'md' }}
+                >
                   {item.answer}
                 </Text>
               </AccordionPanel>

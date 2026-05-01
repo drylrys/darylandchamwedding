@@ -60,23 +60,51 @@ function LandingInvitation() {
             w={{ base: "54px", md: "62px" }}
             h={{ base: "54px", md: "62px" }}
             borderRadius="full"
-            bg="whiteAlpha.900"
-            colorScheme="sage"
+            bgGradient="linear(to-br, gold.400, gold.600)"
+            color="white"
             display="grid"
             placeItems="center"
             fontFamily="heading"
             fontSize={{ base: "md", md: "lg" }}
-            boxShadow="lg"
+            boxShadow="0 4px 20px rgba(184,155,94,0.45)"
             border="3px solid"
             borderColor="white"
             zIndex={3}
           >
             <Image
-              src="/dclogo1.png"
-              alt="Decorative Element"
-              w={{ base: "40px", md: "48px" }}
-              h={{ base: "40px", md: "48px" }}
+              src="images/dc-logo.png"
+              alt="D&C monogram"
+              w={{ base: "52px", md: "62px" }}
+              h={{ base: "52px", md: "62px" }}
+              objectFit="contain"
+              flexShrink={0}
             />
+          </Box>
+          {/* Decorative leaf left */}
+          <Box
+            position="absolute"
+            top={{ base: "88px", md: "106px" }}
+            left="calc(50% - 70px)"
+            fontSize="2xl"
+            transform="rotate(-30deg)"
+            zIndex={2}
+            pointerEvents="none"
+            opacity={0.7}
+          >
+            🌿
+          </Box>
+          {/* Decorative leaf right */}
+          <Box
+            position="absolute"
+            top={{ base: "88px", md: "106px" }}
+            left="calc(50% + 44px)"
+            fontSize="2xl"
+            transform="rotate(30deg) scaleX(-1)"
+            zIndex={2}
+            pointerEvents="none"
+            opacity={0.7}
+          >
+            🌿
           </Box>
 
           <VStack
@@ -87,10 +115,10 @@ function LandingInvitation() {
             mt={{ base: 20, md: 24 }}
             p={{ base: 7, md: 12 }}
             bg="rgba(255, 255, 255, 0.93)"
-            // border="1px solid"
+            border="1px solid"
             borderColor="sage.100"
-            // borderRadius="2xl"
-            // boxShadow="md"
+            borderRadius="2xl"
+            boxShadow="md"
             maxW="3xl"
             mx="auto"
             backdropFilter="blur(4px)"

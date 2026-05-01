@@ -1,7 +1,7 @@
-import LandingInvitation from "./components/LandingInvitation";
-import { Navigate, Route, Routes } from "react-router-dom";
-import GalleryPage from "./pages/GalleryPage";
-import InvitationPage from "./pages/InvitationPage";
+import LandingInvitation from './components/LandingInvitation';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import GalleryPage from './pages/GalleryPage';
+import InvitationPage from './pages/InvitationPage';
 
 function App() {
   return (

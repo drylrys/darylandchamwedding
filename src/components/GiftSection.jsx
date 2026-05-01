@@ -1,8 +1,8 @@
-import { Box, Image, SimpleGrid, Text, VStack } from "@chakra-ui/react";
-import Section from "./Section";
+import { Box, HStack, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import Section from './Section';
 
 const giftPhoto =
-  "https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1200&q=80";
+  'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80';
 
 function GiftSection() {
   return (
@@ -12,85 +12,92 @@ function GiftSection() {
       title="Your Presence Is the Greatest Gift"
       description="Your love, prayers, and presence are more than enough. If you would still like to give a gift, a small monetary blessing would be sincerely appreciated."
     >
-      <SimpleGrid
-        columns={{ base: 1, md: 2 }}
-        spacing={{ base: 8, md: 10 }}
-        maxW="6xl"
-        mx="auto"
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 10 }}
-        bg="linear-gradient(180deg, rgba(245,248,244,0.72) 0%, rgba(255,255,255,1) 100%)"
-        borderTop="1px solid"
-        borderBottom="1px solid"
-        borderColor="sage.100"
-        alignItems="center"
-      >
-        <Box position="relative" maxW={{ base: "100%", md: "460px" }} mx="auto">
-          <Image
-            src={giftPhoto}
-            alt="Gift note visual"
-            borderRadius="3xl"
-            w="full"
-            h={{ base: "280px", md: "380px" }}
-            objectFit="cover"
-            boxShadow="xl"
-          />
-          <Box
-            position="absolute"
-            right={{ base: 4, md: -4 }}
-            bottom={{ base: 4, md: -4 }}
-            w={{ base: "88px", md: "110px" }}
-            h={{ base: "88px", md: "110px" }}
-            borderRadius="full"
-            bg="rgba(184, 155, 94, 0.15)"
-            border="1px solid"
-            borderColor="rgba(184, 155, 94, 0.28)"
-            backdropFilter="blur(4px)"
-          />
-        </Box>
-
-        <VStack align="flex-start" spacing={5} maxW="2xl">
+      <VStack spacing={{ base: 10, md: 14 }} maxW="5xl" mx="auto" w="full">
+        {/* Ornament */}
+        <HStack spacing={3} justify="center">
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
           <Text
-            color="sage.700"
-            textTransform="uppercase"
-            letterSpacing="0.14em"
+            fontFamily="heading"
             fontSize="xs"
-            fontWeight="semibold"
+            color="gold.500"
+            letterSpacing="0.25em"
           >
-            With Gratitude
+            ✦
           </Text>
+          <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+        </HStack>
 
-          <Text
-            color="sage.800"
-            lineHeight="tall"
-            fontSize={{ base: "md", md: "lg" }}
-          >
-            Your presence at our wedding is the greatest gift we could ask for.
-            Sharing this joyful and meaningful day with the people we love most
-            is already more than enough for us.
-          </Text>
-
-          <Text
-            color="sage.800"
-            lineHeight="tall"
-            fontSize={{ base: "md", md: "lg" }}
-          >
-            If you would like to bless us further, a small monetary gift would
-            be warmly appreciated as we begin our life together as husband and
-            wife.
-          </Text>
-
-          <Box pt={1}>
-            <Text
-              fontFamily="heading"
-              fontSize={{ base: "xl", md: "2xl" }}
-              color="sage.800"
-            >
-              Thank you for celebrating, praying, and rejoicing with us.
-            </Text>
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={{ base: 10, md: 14 }}
+          alignItems="center"
+          w="full"
+        >
+          {/* Image — no border-radius, no shadow */}
+          <Box overflow="hidden">
+            <Image
+              src={giftPhoto}
+              alt="Gift note visual"
+              w="full"
+              h={{ base: '260px', md: '380px' }}
+              objectFit="cover"
+              transition="transform .5s ease"
+              _hover={{ transform: 'scale(1.03)' }}
+              display="block"
+            />
           </Box>
-        </VStack>
-      </SimpleGrid>
+
+          {/* Text content */}
+          <VStack align="flex-start" spacing={6}>
+            <VStack align="flex-start" spacing={1}>
+              <Text
+                fontSize="xs"
+                color="sage.400"
+                letterSpacing="0.2em"
+                textTransform="uppercase"
+              >
+                With Gratitude
+              </Text>
+              <Box w="10" h="px" bg="sage.200" />
+            </VStack>
+
+            <Text
+              color="sage.700"
+              lineHeight="tall"
+              fontSize={{ base: 'md', md: 'lg' }}
+              fontFamily="heading"
+              fontWeight="300"
+            >
+              Your presence at our wedding is the greatest gift we could ask
+              for. Sharing this joyful and meaningful day with the people we
+              love most is already more than enough for us.
+            </Text>
+
+            <Text
+              color="sage.600"
+              lineHeight="tall"
+              fontSize={{ base: 'sm', md: 'md' }}
+            >
+              If you would like to bless us further, a small monetary gift would
+              be warmly appreciated as we begin our life together as husband and
+              wife.
+            </Text>
+
+            {/* Pull quote — gold left border only, no bg fill */}
+            <Box borderLeft="2px solid" borderColor="gold.500" pl={4} py={1}>
+              <Text
+                fontFamily="heading"
+                fontSize={{ base: 'lg', md: 'xl' }}
+                color="sage.800"
+                fontStyle="italic"
+                fontWeight="300"
+              >
+                "Thank you for celebrating, praying, and rejoicing with us."
+              </Text>
+            </Box>
+          </VStack>
+        </SimpleGrid>
+      </VStack>
     </Section>
   );
 }

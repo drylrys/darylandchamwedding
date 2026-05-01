@@ -1,11 +1,11 @@
 import {
   Box,
-  Button,
   HStack,
   Image,
   SimpleGrid,
   Text,
   VStack,
+  Link,
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import Section from './Section';
@@ -34,104 +34,105 @@ function GalleryBannerSection() {
       description="See a curated collection of our favorite moments as we prepare for this special day."
       bg="white"
     >
-      <VStack
-        maxW="6xl"
-        mx="auto"
-        spacing={{ base: 8, md: 10 }}
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 10 }}
-        bg="linear-gradient(180deg, rgba(245,248,244,0.72) 0%, rgba(255,255,255,1) 100%)"
-        borderTop="1px solid"
-        borderBottom="1px solid"
-        borderColor="sage.100"
-      >
+      <VStack maxW="5xl" mx="auto" spacing={{ base: 10, md: 14 }} w="full">
+        {/* Ornament + tagline */}
         <VStack spacing={3}>
           <HStack spacing={3} justify="center">
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
+            <Box w="10" h="px" bg="gold.500" opacity={0.6} />
             <Text
               fontFamily="heading"
-              fontSize={{ base: 'lg', md: 'xl' }}
-              color="sage.800"
-              letterSpacing="0.08em"
+              fontSize="xs"
+              color="gold.500"
+              letterSpacing="0.25em"
             >
-              Moments We Treasure
+              ✦
             </Text>
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
+            <Box w="10" h="px" bg="gold.500" opacity={0.6} />
           </HStack>
-          <Text color="sage.700" textAlign="center" maxW="2xl" fontSize="sm">
+          <Text color="sage.500" fontSize="sm" fontStyle="italic">
             A glimpse of the love, laughter, and quiet moments that led us here.
           </Text>
         </VStack>
 
+        {/* Photo grid — flat, no card, varied heights */}
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
-          spacing={{ base: 5, md: 6 }}
+          spacing={{ base: 2, md: 3 }}
           w="full"
         >
           {memoryPhotos.map((photo, index) => (
-            <VStack key={photo.src} spacing={3} align="stretch">
+            <Box
+              key={photo.src}
+              overflow="hidden"
+              position="relative"
+              _hover={{
+                '& .banner-img': { transform: 'scale(1.05)' },
+                '& .banner-overlay': { opacity: 1 },
+              }}
+            >
+              <Image
+                className="banner-img"
+                src={photo.src}
+                alt={photo.alt}
+                w="full"
+                h={{
+                  base: '240px',
+                  md: index === 1 ? '380px' : '300px',
+                }}
+                objectFit="cover"
+                transition="transform .5s ease"
+                display="block"
+              />
+              {/* Gradient overlay on hover */}
               <Box
-                position="relative"
-                overflow="hidden"
-                borderRadius="3xl"
-                boxShadow="xl"
-                _hover={{ '& img': { transform: 'scale(1.04)' } }}
+                className="banner-overlay"
+                position="absolute"
+                inset="0"
+                bgGradient="linear(to-t, rgba(31,42,31,0.5), transparent)"
+                opacity={0}
+                transition="opacity .35s ease"
+                display="flex"
+                alignItems="flex-end"
+                p={5}
               >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  w="full"
-                  h={{ base: '260px', md: '320px' }}
-                  objectFit="cover"
-                  transition="transform .45s ease"
-                />
-                <Box
-                  position="absolute"
-                  inset="0"
-                  bgGradient="linear(to-t, rgba(0,0,0,0.28), rgba(0,0,0,0.04), transparent)"
-                />
-                <Box
-                  position="absolute"
-                  left={4}
-                  bottom={4}
-                  px={3}
-                  py={1.5}
-                  bg="rgba(255,255,255,0.9)"
-                  borderRadius="full"
-                  backdropFilter="blur(6px)"
+                <Text
+                  color="whiteAlpha.800"
+                  fontSize="xs"
+                  letterSpacing="0.2em"
+                  textTransform="uppercase"
+                  fontFamily="heading"
+                  fontWeight="300"
                 >
-                  <Text
-                    color="sage.800"
-                    fontSize="xs"
-                    fontWeight="semibold"
-                    letterSpacing="0.08em"
-                    textTransform="uppercase"
-                  >
-                    Memory {index + 1}
-                  </Text>
-                </Box>
+                  Memory {index + 1}
+                </Text>
               </Box>
-            </VStack>
+            </Box>
           ))}
         </SimpleGrid>
 
-        <Text color="sage.800" textAlign="center" maxW="2xl">
-          Tap below to open the full gallery page and see more of our story in
-          photos.
-        </Text>
-
-        <HStack>
-          <Button
+        {/* CTA — flat text link, no button */}
+        <VStack spacing={2} textAlign="center">
+          <Text color="sage.500" fontSize="sm">
+            See more of our story in photos.
+          </Text>
+          <Link
             as={RouterLink}
             to="/gallery"
-            colorScheme="sage"
-            size="lg"
-            px={8}
-            _hover={{ transform: 'translateY(-1px)', boxShadow: 'md' }}
+            color="sage.700"
+            fontSize="sm"
+            letterSpacing="0.14em"
+            textTransform="uppercase"
+            fontFamily="heading"
+            fontWeight="300"
+            _hover={{ color: 'gold.500', textDecoration: 'none' }}
+            transition="color .2s"
+            display="inline-flex"
+            alignItems="center"
+            gap={2}
           >
-            View Gallery
-          </Button>
-        </HStack>
+            View Full Gallery →
+          </Link>
+        </VStack>
       </VStack>
     </Section>
   );

@@ -1,50 +1,40 @@
-import {
-  Badge,
-  Box,
-  Divider,
-  HStack,
-  Image,
-  SimpleGrid,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-import Section from './Section';
+import { Box, HStack, Image, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import Section from "./Section";
 
 const sampleLooks = [
   {
-    title: 'Ladies Formal',
-    caption: 'Elegant soft-toned formalwear for a refined garden celebration.',
-    image:
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80',
+    title: "Ladies Formal",
+    caption: "Elegant soft-toned formalwear for a refined garden celebration.",
+    image: "/images/women-guide.jpeg"
   },
   {
-    title: 'Gentlemen Suit & Tie',
-    caption: 'Classic black suit, crisp white shirt, and polished tailoring.',
-    image:
-      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Sage-Inspired Palette',
-    caption: 'Muted greens and formal neutrals to match the wedding aesthetic.',
-    image:
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
-  },
+    title: "Gentlemen Suit & Tie",
+    caption: "Classic black suit, crisp white shirt, and polished tailoring.",
+    image: "/images/men-guide.jpeg"
+  }
 ];
 
 const attireGuide = [
   {
-    title: 'Overall',
+    title: "Overall",
     detail:
-      'Formal attire. Suit & tie for gentlemen, elegant formal wear for ladies.',
+      "Formal attire. Suit & tie for gentlemen, elegant formal wear for ladies."
   },
   {
-    title: 'Bridesmaids',
-    detail: 'Sage green dresses in a coordinated and graceful tone.',
+    title: "Bridesmaids",
+    detail: "Sage green dresses in a coordinated and graceful tone."
   },
   {
-    title: 'Groomsmen',
-    detail: 'Black suits with white shirts for a timeless and polished look.',
-  },
+    title: "Groomsmen",
+    detail: "Black suits with white shirts for a timeless and polished look."
+  }
+];
+
+// Colour swatches — no badge cards, just flat circles + label
+const palette = [
+  { label: "Sage Green", bg: "#85a872" },
+  { label: "Black", bg: "#1a1a1a" },
+  { label: "White", bg: "#f8f8f6", border: "#c2d5b8" }
 ];
 
 function DressCodeSection() {
@@ -55,140 +45,149 @@ function DressCodeSection() {
       title="Formal · Suit & Tie"
       description="An elegant palette inspired by sage green, black, and white."
     >
-      <HStack justify="center" spacing={3} flexWrap="wrap">
-        <Badge
-          px={3}
-          py={1.5}
-          borderRadius="full"
-          bg="sage.200"
-          color="sage.900"
-        >
-          Sage Green
-        </Badge>
-        <Badge px={3} py={1.5} borderRadius="full" bg="black" color="white">
-          Black
-        </Badge>
-        <Badge
-          px={3}
-          py={1.5}
-          borderRadius="full"
-          bg="white"
-          color="black"
-          border="1px solid"
-          borderColor="sage.200"
-        >
-          White
-        </Badge>
-      </HStack>
-
-      <VStack
-        spacing={{ base: 6, md: 8 }}
-        maxW="5xl"
-        mx="auto"
-        px={{ base: 4, md: 8 }}
-        py={{ base: 8, md: 10 }}
-        bg="linear-gradient(180deg, rgba(245,248,244,0.7) 0%, rgba(255,255,255,1) 100%)"
-        borderTop="1px solid"
-        borderBottom="1px solid"
-        borderColor="sage.100"
-      >
-        <VStack spacing={3}>
+      <VStack spacing={{ base: 12, md: 16 }} maxW="4xl" mx="auto" w="full">
+        {/* ── Colour palette ── */}
+        <VStack spacing={5}>
           <HStack spacing={3} justify="center">
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
+            <Box w="10" h="px" bg="gold.500" opacity={0.6} />
             <Text
               fontFamily="heading"
-              fontSize={{ base: 'lg', md: 'xl' }}
+              fontSize="xs"
+              color="gold.500"
+              letterSpacing="0.25em"
+            >
+              ✦
+            </Text>
+            <Box w="10" h="px" bg="gold.500" opacity={0.6} />
+          </HStack>
+          <HStack spacing={8} justify="center" flexWrap="wrap">
+            {palette.map(({ label, bg, border }) => (
+              <VStack key={label} spacing={2}>
+                <Box
+                  w="48px"
+                  h="48px"
+                  borderRadius="full"
+                  bg={bg}
+                  border={border ? `1px solid ${border}` : undefined}
+                />
+                <Text
+                  fontSize="xs"
+                  color="sage.500"
+                  letterSpacing="0.14em"
+                  textTransform="uppercase"
+                >
+                  {label}
+                </Text>
+              </VStack>
+            ))}
+          </HStack>
+        </VStack>
+
+        {/* ── Attire guide ── */}
+        <VStack spacing={8} w="full">
+          <VStack spacing={2} textAlign="center">
+            <Text
+              fontFamily="heading"
+              fontSize={{ base: "xl", md: "2xl" }}
               color="sage.800"
-              letterSpacing="0.08em"
+              fontWeight="300"
+              letterSpacing="0.06em"
             >
               Attire Guide
             </Text>
-            <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
-          </HStack>
-          <Text color="sage.700" textAlign="center" maxW="2xl" fontSize="sm">
-            Please dress in refined formalwear that complements our romantic
-            garden wedding palette.
-          </Text>
-        </VStack>
+            <Box
+              w="16"
+              h="px"
+              bgGradient="linear(to-r, transparent, gold.500, transparent)"
+            />
+            <Text color="sage.600" fontSize="sm" maxW="sm" mt={1}>
+              Please dress in refined formalwear that complements our romantic
+              garden wedding palette.
+            </Text>
+          </VStack>
 
-        <SimpleGrid
-          columns={{ base: 1, md: 3 }}
-          spacing={{ base: 6, md: 8 }}
-          w="full"
-        >
-          {attireGuide.map((item, index) => (
-            <VStack
-              key={item.title}
-              spacing={3}
-              textAlign="center"
-              align="stretch"
-            >
-              <Text
-                color="black"
-                fontWeight="semibold"
-                fontFamily="heading"
-                fontSize={{ base: 'lg', md: 'xl' }}
+          <SimpleGrid
+            columns={{ base: 1, md: 3 }}
+            spacing={{ base: 0, md: 8 }}
+            w="full"
+          >
+            {attireGuide.map((item, index) => (
+              <VStack
+                key={item.title}
+                spacing={2}
+                textAlign="center"
+                borderBottom={{ base: "1px solid", md: "none" }}
+                borderRight={{
+                  base: "none",
+                  md: index < attireGuide.length - 1 ? "1px solid" : "none"
+                }}
+                borderColor="sage.100"
+                pb={{ base: 6, md: 0 }}
+                mb={{ base: 6, md: 0 }}
+                px={{ base: 0, md: 6 }}
               >
-                {item.title}
-              </Text>
-              <Box w="12" h="1px" bg="sage.300" mx="auto" />
-              <Text color="sage.800" lineHeight="tall">
-                {item.detail}
-              </Text>
-              {index < attireGuide.length - 1 && (
-                <Divider
-                  display={{ base: 'block', md: 'none' }}
-                  pt={3}
-                  borderColor="sage.100"
-                />
-              )}
-            </VStack>
-          ))}
-        </SimpleGrid>
-      </VStack>
-
-      <VStack spacing={4} align="stretch">
-        <Text
-          textAlign="center"
-          color="sage.700"
-          textTransform="uppercase"
-          letterSpacing="0.14em"
-          fontSize="xs"
-          fontWeight="semibold"
-        >
-          Sample Looks
-        </Text>
-
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
-          {sampleLooks.map((look) => (
-            <VStack key={look.title} spacing={4} align="stretch">
-              <Image
-                src={look.image}
-                alt={look.title}
-                h={{ base: '240px', md: '280px' }}
-                w="full"
-                objectFit="cover"
-                borderRadius="2xl"
-                transition="transform .35s ease, box-shadow .35s ease"
-                boxShadow="md"
-                _hover={{ transform: 'translateY(-3px)', boxShadow: 'xl' }}
-              />
-              <VStack spacing={2} px={{ base: 1, md: 2 }}>
                 <Text
-                  color="black"
-                  fontWeight="semibold"
                   fontFamily="heading"
-                  fontSize="lg"
+                  fontSize={{ base: "lg", md: "xl" }}
+                  color="sage.800"
+                  fontWeight="300"
+                  letterSpacing="0.06em"
                 >
-                  {look.title}
+                  {item.title}
                 </Text>
-                <Text color="sage.800" fontSize="sm" textAlign="center">
-                  {look.caption}
+                <Box w="8" h="px" bg="sage.200" mx="auto" />
+                <Text color="sage.600" fontSize="sm" lineHeight="tall">
+                  {item.detail}
                 </Text>
               </VStack>
-            </VStack>
-          ))}
-        </SimpleGrid>
+            ))}
+          </SimpleGrid>
+        </VStack>
+
+        {/* ── Sample looks ── */}
+        <VStack spacing={6} w="full">
+          <VStack spacing={1} textAlign="center">
+            <Text
+              fontSize="xs"
+              color="sage.400"
+              letterSpacing="0.2em"
+              textTransform="uppercase"
+            >
+              Sample Looks
+            </Text>
+            <Box w="10" h="px" bg="sage.200" mx="auto" />
+          </VStack>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} w="full">
+            {sampleLooks.map((look) => (
+              <VStack key={look.title} spacing={3} align="stretch">
+                <Image
+                  src={look.image}
+                  alt={look.title}
+                  h={{ base: "240px", md: "280px" }}
+                  w="full"
+                  objectFit="cover"
+                  transition="transform .35s ease"
+                  _hover={{ transform: "scale(1.02)" }}
+                />
+                <VStack spacing={1} px={1}>
+                  <Text
+                    fontFamily="heading"
+                    fontSize="md"
+                    color="sage.800"
+                    fontWeight="300"
+                    letterSpacing="0.04em"
+                  >
+                    {look.title}
+                  </Text>
+                  <Text color="sage.500" fontSize="xs" textAlign="center">
+                    {look.caption}
+                  </Text>
+                </VStack>
+              </VStack>
+            ))}
+          </SimpleGrid>
+        </VStack>
       </VStack>
     </Section>
   );

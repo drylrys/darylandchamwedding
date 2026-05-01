@@ -46,6 +46,54 @@ function HeroSection() {
         filter: "blur(6px)"
       }}
     >
+      {/* Extra decorative ring top-left */}
+      <Box
+        position="absolute"
+        top={{ base: "60px", md: "80px" }}
+        left={{ base: "20px", md: "60px" }}
+        w={{ base: "80px", md: "120px" }}
+        h={{ base: "80px", md: "120px" }}
+        borderRadius="full"
+        border="1px solid"
+        borderColor="rgba(164, 188, 159, 0.3)"
+        pointerEvents="none"
+      />
+      {/* Extra decorative ring bottom-right */}
+      <Box
+        position="absolute"
+        bottom={{ base: "40px", md: "60px" }}
+        right={{ base: "20px", md: "60px" }}
+        w={{ base: "60px", md: "90px" }}
+        h={{ base: "60px", md: "90px" }}
+        borderRadius="full"
+        border="1px solid"
+        borderColor="rgba(184, 155, 94, 0.25)"
+        pointerEvents="none"
+      />
+      {/* Gold dot accent top-right */}
+      <Box
+        position="absolute"
+        top={{ base: "40px", md: "56px" }}
+        right={{ base: "40px", md: "100px" }}
+        w="8px"
+        h="8px"
+        borderRadius="full"
+        bg="gold.400"
+        opacity={0.55}
+        pointerEvents="none"
+      />
+      {/* Sage dot accent bottom-left */}
+      <Box
+        position="absolute"
+        bottom={{ base: "60px", md: "80px" }}
+        left={{ base: "40px", md: "120px" }}
+        w="6px"
+        h="6px"
+        borderRadius="full"
+        bg="sage.400"
+        opacity={0.6}
+        pointerEvents="none"
+      />
       <Container maxW="6xl" px={{ base: 5, md: 8 }}>
         <VStack
           spacing={{ base: 7, md: 10 }}
@@ -56,18 +104,26 @@ function HeroSection() {
           zIndex={1}
           py={{ base: 8, md: 12 }}
         >
-          <VStack spacing={2}>
-            <HStack spacing={3} justify="center">
-              <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
+          <VStack spacing={3}>
+            <HStack spacing={4} justify="center" align="center">
+              <Box w="16" h="px" bg="gold.500" opacity={0.6} />
+              {/* D&C monogram logo — replace src with your image */}
               <Image
-                src="/dclogo1.png"
-                alt="Decorative Element"
-                w={{ base: "40px", md: "48px" }}
-                h={{ base: "40px", md: "48px" }}
+                src="images/dc-logo.png"
+                alt="D&C monogram"
+                w={{ base: "52px", md: "62px" }}
+                h={{ base: "52px", md: "62px" }}
+                objectFit="contain"
+                flexShrink={0}
               />
-              <Box w="14" h="1px" bg="gold.500" opacity={0.75} />
+              <Box w="16" h="px" bg="gold.500" opacity={0.6} />
             </HStack>
-            <Text color="sage.700" fontSize="sm">
+            <Text
+              fontSize="xs"
+              color="sage.500"
+              letterSpacing="0.22em"
+              textTransform="uppercase"
+            >
               Together with our families
             </Text>
           </VStack>
@@ -78,7 +134,6 @@ function HeroSection() {
             letterSpacing="0.015em"
             bgGradient="linear(to-b, #1f2a1f, #3d563e)"
             bgClip="text"
-            textShadow="0 10px 24px rgba(61, 86, 62, 0.12)"
             position="relative"
             px={{ base: 1, md: 2 }}
             _after={{
@@ -86,43 +141,68 @@ function HeroSection() {
               position: "absolute",
               left: "50%",
               transform: "translateX(-50%)",
-              bottom: { base: "-12px", md: "-14px" },
-              w: { base: "120px", md: "170px" },
-              h: "2px",
+              bottom: { base: "-14px", md: "-16px" },
+              w: { base: "100px", md: "140px" },
+              h: "1px",
               bgGradient: "linear(to-r, transparent, gold.500, transparent)",
-              opacity: 0.9
+              opacity: 0.8
             }}
           >
             Daryl & Cham
           </Heading>
 
-          <VStack spacing={1.5}>
+          <VStack spacing={2}>
             <Text
+              fontFamily="heading"
               fontSize={{ base: "md", md: "lg" }}
               color="sage.800"
-              fontWeight="medium"
+              fontWeight="300"
+              letterSpacing="0.08em"
             >
               March 7, 2027 · Saturday
             </Text>
-            <Text fontSize={{ base: "sm", md: "md" }} color="sage.700">
+            <Text
+              fontSize={{ base: "xs", md: "sm" }}
+              color="sage.500"
+              letterSpacing="0.18em"
+              textTransform="uppercase"
+            >
               Oasis Manila · Garden Wedding
             </Text>
-            <Box w="24" h="1px" bg="sage.300" mt={1} />
+            <Box
+              w="10"
+              h="px"
+              bgGradient="linear(to-r, transparent, gold.500, transparent)"
+              mt={1}
+            />
           </VStack>
 
           <CountdownTimer />
 
-          <Button
-            as="a"
-            href="#rsvp"
-            size="lg"
-            colorScheme="sage"
-            px={9}
-            boxShadow="lg"
-            _hover={{ transform: "translateY(-1px)", boxShadow: "lg" }}
-          >
-            RSVP Now
-          </Button>
+          <VStack spacing={3}>
+            <Button
+              as="a"
+              href="#rsvp"
+              size="lg"
+              variant="outline"
+              colorScheme="sage"
+              px={10}
+              borderWidth="1px"
+              letterSpacing="0.12em"
+              fontWeight="400"
+              _hover={{
+                bg: "sage.500",
+                color: "white",
+                borderColor: "sage.500"
+              }}
+              transition="all .25s"
+            >
+              RSVP Now
+            </Button>
+            <Text fontSize="xs" color="sage.400" letterSpacing="0.1em">
+              Kindly reply by February 10, 2027
+            </Text>
+          </VStack>
         </VStack>
       </Container>
     </Box>
