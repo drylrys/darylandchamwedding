@@ -1,5 +1,5 @@
-import { Box, HStack, Text, VStack } from '@chakra-ui/react';
-import { useEffect, useMemo, useState } from 'react';
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
 
 function getTimeRemaining(targetDate) {
   const total = targetDate.getTime() - Date.now();
@@ -16,17 +16,17 @@ function getTimeRemaining(targetDate) {
 function TimeBlock({ value, label, withDivider = false }) {
   return (
     <Box position="relative" textAlign="center">
-      <VStack minW={{ base: '64px', md: '88px' }} spacing={0}>
+      <VStack minW={{ base: "64px", md: "88px" }} spacing={0}>
         <Text
-          fontSize={{ base: '3.2rem', md: '4.8rem' }}
+          fontSize={{ base: "3.2rem", md: "4.8rem" }}
           fontWeight="300"
           color="sage.800"
           lineHeight="1"
           letterSpacing="-0.02em"
-          fontVariantNumeric="tabular-nums"
+          fontvariantnumeric="tabular-nums"
           fontFamily="heading"
         >
-          {String(value).padStart(2, '0')}
+          {String(value).padStart(2, "0")}
         </Text>
         <Box
           w="6"
@@ -38,7 +38,7 @@ function TimeBlock({ value, label, withDivider = false }) {
           mb={1.5}
         />
         <Text
-          fontSize={{ base: '9px', md: '10px' }}
+          fontSize={{ base: "9px", md: "10px" }}
           textTransform="uppercase"
           letterSpacing="0.22em"
           color="sage.600"
@@ -50,11 +50,11 @@ function TimeBlock({ value, label, withDivider = false }) {
       {withDivider && (
         <Text
           position="absolute"
-          right={{ base: '-10px', md: '-14px' }}
+          right={{ base: "-10px", md: "-14px" }}
           top="30%"
           transform="translateY(-50%)"
           color="sage.300"
-          fontSize={{ base: '2xl', md: '3xl' }}
+          fontSize={{ base: "2xl", md: "3xl" }}
           fontWeight="thin"
           lineHeight="1"
           userSelect="none"
@@ -67,7 +67,7 @@ function TimeBlock({ value, label, withDivider = false }) {
 }
 
 function CountdownTimer() {
-  const targetDate = useMemo(() => new Date('2027-03-07T15:00:00+08:00'), []);
+  const targetDate = useMemo(() => new Date("2027-03-07T15:00:00+08:00"), []);
   const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining(targetDate));
 
   useEffect(() => {
@@ -79,26 +79,26 @@ function CountdownTimer() {
   }, [targetDate]);
 
   const blocks = [
-    { value: timeLeft.days, label: 'Days' },
-    { value: timeLeft.hours, label: 'Hours' },
-    { value: timeLeft.minutes, label: 'Minutes' },
-    { value: timeLeft.seconds, label: 'Seconds' },
+    { value: timeLeft.days, label: "Days" },
+    { value: timeLeft.hours, label: "Hours" },
+    { value: timeLeft.minutes, label: "Minutes" },
+    { value: timeLeft.seconds, label: "Seconds" }
   ];
 
   return (
     <VStack spacing={{ base: 3, md: 4 }}>
       <HStack spacing={3} justify="center">
-        <Box w={{ base: '10', md: '14' }} h="1px" bg="gold.500" opacity={0.7} />
+        <Box w={{ base: "10", md: "14" }} h="1px" bg="gold.500" opacity={0.7} />
         <Text
-          fontSize={{ base: '10px', md: 'xs' }}
+          fontSize={{ base: "10px", md: "xs" }}
           textTransform="uppercase"
           letterSpacing="0.16em"
           color="sage.700"
           fontWeight="semibold"
         >
-          {timeLeft.isAfterWedding ? 'Since We Said I Do' : 'Countdown to I Do'}
+          {timeLeft.isAfterWedding ? "Since We Said I Do" : "Countdown to I Do"}
         </Text>
-        <Box w={{ base: '10', md: '14' }} h="1px" bg="gold.500" opacity={0.7} />
+        <Box w={{ base: "10", md: "14" }} h="1px" bg="gold.500" opacity={0.7} />
       </HStack>
 
       <HStack spacing={{ base: 3, md: 6 }} justify="center" flexWrap="wrap">

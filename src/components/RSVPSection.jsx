@@ -14,7 +14,7 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { useState } from "react";
-// import { supabase } from '../lib/supabase';
+import { supabase } from "../lib/supabase";
 import Section from "./Section";
 
 const DEADLINE = "February 10, 2027";
@@ -481,32 +481,6 @@ function RSVPSection() {
                         </Select>
                       )}
                     </FormControl>
-
-                    <FormControl>
-                      <FormLabel
-                        color="sage.600"
-                        fontWeight="normal"
-                        fontSize="xs"
-                        letterSpacing="0.12em"
-                        textTransform="uppercase"
-                      >
-                        Meal Preference
-                      </FormLabel>
-                      <Select
-                        name="meal_choice"
-                        value={form.meal_choice}
-                        onChange={handleChange}
-                        placeholder="Select meal"
-                        variant="flushed"
-                        borderColor="sage.200"
-                        _hover={{ borderColor: "sage.400" }}
-                        _focus={{ borderColor: "sage.500", boxShadow: "none" }}
-                      >
-                        <option value="beef">🥩 Beef</option>
-                        <option value="fish">🐟 Fish</option>
-                        <option value="vegetarian">🥗 Vegetarian</option>
-                      </Select>
-                    </FormControl>
                   </HStack>
 
                   {/* Guest names — only when there are allowed guests */}
@@ -533,11 +507,11 @@ function RSVPSection() {
                           py={1}
                           fontSize="xs"
                         >
-                          {`+${allowedSeats - 1} guest${allowedSeats - 1 > 1 ? "s" : ""} allowed`}
+                          {`+${parseInt(form.guest_count, 10) - 1} guest${parseInt(form.guest_count, 10) - 1 > 1 ? "s" : ""} selected`}
                         </Badge>
                       </HStack>
                       {Array.from(
-                        { length: allowedSeats - 1 },
+                        { length: parseInt(form.guest_count, 10) - 1 },
                         (_, i) => i
                       ).map((i) => (
                         <FormControl key={i}>

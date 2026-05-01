@@ -108,9 +108,9 @@ function Tagline({ children }) {
 function NameList({ names }) {
   return (
     <VStack spacing={1.5} textAlign="center">
-      {names.map((name) => (
+      {names.map((name, index) => (
         <Text
-          key={name}
+          key={`${name}-${index}`}
           color="sage.700"
           fontSize={{ base: "sm", md: "md" }}
           fontFamily="heading"
