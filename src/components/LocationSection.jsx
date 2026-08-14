@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   AspectRatio,
   Box,
@@ -7,12 +7,12 @@ import {
   Link,
   SimpleGrid,
   Text,
-  VStack,
-} from '@chakra-ui/react';
-import Section from './Section';
+  VStack
+} from "@chakra-ui/react";
+import Section from "./Section";
 
 const venuePhoto =
-  'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=80';
+  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=80";
 
 function LocationSection() {
   return (
@@ -65,7 +65,7 @@ function LocationSection() {
               </Text>
               <Text
                 fontFamily="heading"
-                fontSize={{ base: '2xl', md: '3xl' }}
+                fontSize={{ base: "2xl", md: "3xl" }}
                 color="sage.800"
                 fontWeight="300"
                 letterSpacing="0.04em"
@@ -142,7 +142,7 @@ function LocationSection() {
                   color="sage.800"
                   fontSize="md"
                 >
-                  March 7, 2027 · Saturday
+                  March 7, 2027 · Sunday
                 </Text>
               </HStack>
             </VStack>
@@ -150,7 +150,7 @@ function LocationSection() {
             {/* Pull quote */}
             <Text
               fontFamily="heading"
-              fontSize={{ base: 'lg', md: 'xl' }}
+              fontSize={{ base: "lg", md: "xl" }}
               color="sage.700"
               fontWeight="300"
               fontStyle="italic"
@@ -171,7 +171,7 @@ function LocationSection() {
               fontSize="sm"
               letterSpacing="0.08em"
               textTransform="uppercase"
-              _hover={{ color: 'gold.500', textDecoration: 'none' }}
+              _hover={{ color: "gold.500", textDecoration: "none" }}
               transition="color .2s"
               display="inline-flex"
               alignItems="center"
@@ -189,10 +189,10 @@ function LocationSection() {
                 src={venuePhoto}
                 alt="Garden wedding venue inspiration"
                 w="full"
-                h={{ base: '260px', md: '320px' }}
+                h={{ base: "260px", md: "320px" }}
                 objectFit="cover"
                 transition="transform .5s ease"
-                _hover={{ transform: 'scale(1.03)' }}
+                _hover={{ transform: "scale(1.03)" }}
               />
               {/* Minimal caption overlay — just text, no frosted card */}
               <Box

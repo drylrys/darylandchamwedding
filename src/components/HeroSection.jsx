@@ -159,7 +159,7 @@ function HeroSection() {
               fontWeight="300"
               letterSpacing="0.08em"
             >
-              March 7, 2027 · Saturday
+              March 7, 2027 · Sunday
             </Text>
             <Text
               fontSize={{ base: "xs", md: "sm" }}
